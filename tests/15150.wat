@@ -3,6 +3,8 @@ Course Info:
   course: 15150
   name: Functional Programming
   sem: S13
+  cstart: 01/01/2013
+  cend: 06/01/2013
   text: |
     head:15-150
     15-150 is the best course in the history of computer science, featuring the world's most attractive TA's and monads.
