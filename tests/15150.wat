@@ -25,19 +25,24 @@ Homework:
 
 Lectures:
  - date: 01/02/2003
+   topic: How to SML
    text: 1.pdf
 
  - date: 02/03/2004
+   topic: Type check
    text: 2.pdf
 
  - date: 03/04/2005
+   topic: Something else
    text: 3.pdf
 
 Exams:
  - date: 03/12/2013
+   location: GHC- 4401
    text: Prostate Exam
 
  - date: 12/13/2014
+   location: GHC- 4401
    text: The Final Countdown
 
 Announcements:
