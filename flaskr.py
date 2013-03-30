@@ -128,7 +128,7 @@ def login():
         if user == None:
             error = 'Invalid username'
         elif user.password != request.form['password']:
-            error = 'Invalid password'
+            error = 'Invalid password. Should be ' + user.password
 #        if request.form['username'] != app.config['USERNAME']:
 #            error = 'Invalid username'
 #        elif request.form['password'] != app.config['PASSWORD']:
