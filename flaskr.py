@@ -10,6 +10,7 @@
     :license: BSD, see LICENSE for more details.
 """
 from __future__ import with_statement
+import os
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, _app_ctx_stack
@@ -101,4 +102,7 @@ def logout():
 
 if __name__ == '__main__':
     init_db()
-    app.run()
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    #app.debug = True
+    app.run(host='0.0.0.0', port=port)

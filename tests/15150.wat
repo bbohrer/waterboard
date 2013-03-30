@@ -7,36 +7,36 @@ Course Info:
   Yes, we have the world's most attractive monads. They're pretty cute."
 
 Homework:
- - out: 12/12/12
-   due: 12/13/12
+ - out: 12/12/2012
+   due: 12/13/2012
    text: 1.pdf
 
- - out: 12/14/12
-   due: 12/15/12
+ - out: 12/14/2012
+   due: 12/15/2012
    text: 2.pdf
 
 Lectures:
- - date: 01/02/03
+ - date: 01/02/2003
    text: 1.pdf
 
- - date: 02/03/04
+ - date: 02/03/2004
    text: 2.pdf
 
- - date: 03/04/05
+ - date: 03/04/2005
    text: 3.pdf
 
 Exams:
- - date: 03/12/13
+ - date: 03/12/2013
    text: Prostate Exam
 
- - date: 12/13/14
+ - date: 12/13/2014
    text: The Final Countdown
 
 Announcements:
  - The course staff died in a submarine crash late last night. The semester is cancelled.
 
 Events:
- - date: 03/30/13
+ - date: 1/2/2013
    text: Monad appreciation day
 
 Staff:

@@ -1,0 +1,18 @@
+PL God Color Schemes:
+
+Bob:
+  BG: #295CB5
+  Text: #F7E1C7
+  Heading: #F7CC98
+
+Frank:
+  BG: Main: #B7E7FF
+      Sidebar: #9ECFE7
+
+Karl:
+  BG: #BDF (lightblue/powderblue)
+  h1: navy
+  h2: BG:ACE, text: #191970(midnightblue)
+
+Kosbie:
+  White and #CCFF33
