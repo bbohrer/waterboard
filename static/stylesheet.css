@@ -5255,11 +5255,13 @@ a.badge:focus {
   border-top: 1px solid #ccc;
 }
 .calendar TD {
-  height: 50px;
-  width: 75px;
+  height: 100px;
+  width: 200px;
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   font-size: 24px;
   color: #999;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
 }
 .calendar TD.weekend {
   color: #CDCDCD;
