@@ -32,8 +32,10 @@ def admin():
         flash('Updated website')
 
         return redirect(url_for('/admin/'))
-    
-    return render_template('admin.html')
+
+    (keys, mydict) = parser.parse("tests/15150.wat")
+
+    return render_template('admin.html', headers=keys, dict=mydict["Course Info"])
 
 @app.route('/')
 @app.route('/course info/')
