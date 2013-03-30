@@ -7,32 +7,21 @@
   <title> {% if "name" in dict %} {{ dict["name"] }} {% elif "course" in dict %} {{ dict["course"] }} {% else %} Unknown Course {% endif %} - {% if "sem" in dict %} {{ dict["sem"] }} {% else %} Unknown Semester {% endif %} </title>
   <link rel=stylesheet type=text/css href="{{ url_for('static',filename='stylesheet.css') }}" />
   <script src="{{ url_for('static',filename='bootstrap.js') }}"></script>
-  <style>
-    body {padding-top:50px;}
-    {% block optstyle %}
-    {% endblock %}
-  </style>
 </head>
 
 <body>
+  <div class="container">
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <h1>{% if "course" in dict %} {{ dict["course"] }} {% else %} Unknown {% endif %} 
+      <small>{% if "name" in dict %} {{ dict["name"] }} {% else %} Unknown Course {% endif %}</small></h1>
+
+    <div class="navbar navbar-inverse">
       <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="/">{% if "course" in dict %} {{ dict["course"] }} {% else %} Unknown Course {% endif %}</a>
-          <div class="nav-collapse collapse">
             <ul class="nav">
               {% for key in headers %} 
                 <li><a href="/{{ key|lower }}"> {{ key|capitalize }}</a></li>
               {% endfor %}
             </ul>
-          </div><!--/.nav-collapse -->
-        </div>
       </div>
     </div>
     
@@ -40,6 +29,7 @@
     {% block content %}
     {% endblock %}
   
+  </div>
   
 </body>
 </html>
