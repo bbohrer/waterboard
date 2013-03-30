@@ -19,6 +19,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 DEBUG = True
 USERNAME = 'admin'
 PASSWORD = 'default'
+SECRET_KEY = 'development key'
 
 from flask.ext.sqlalchemy import SQLAlchemy
 

@@ -67,9 +67,8 @@ def parseEvents(data):
 def parseStaff(data):
   return data
 
-def parse(filename):
-  f = open(filename)
-  data = yaml.load(f)
+def parseText(source):
+  data = yaml.load(source)
   headers = []
   ret = {}
   if "Course Info" in data:
@@ -94,3 +93,8 @@ def parse(filename):
     headers.append("Staff")
     ret["Staff"] = parseStaff(data["Staff"])
   return headers,ret
+
+def parse(filename):
+  f = open(filename) 
+  return parseText(f)
+
