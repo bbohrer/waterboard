@@ -22,6 +22,13 @@ def parseLectures(data):
   data = map(lambda x: (x['date'],x['text']) , data)
   return data
 
+def parseExams(data):
+  for i,a in enumerate(data):
+    a['text'] = linkify(a['text'])
+    data[i] = a
+  data = map(lambda x: (x['date'],x['text']) , data)
+  return data
+
 def parseAnnouncements(data):
   for i,a in enumerate(data):
     a = linkify(a)
@@ -38,8 +45,24 @@ def parseEvents(data):
 def parse(filename):
   f = open(filename)
   data = yaml.load(f)
-  courseinfo = parseCourseInfo(data["Course Info"])
-  homework = parseHomework(data["Homework"])
-  lectures = parseLectures(data["Lectures"])
-  announcements = parseAnnouncements(data["Announcements"])
-  events = parseEvents(data["Events"])
+  headers = []
+  ret = {}
+  if "Course Info" in data:
+    headers.append("Course Info")
+    ret['Course Info'] = parseCourseInfo(data["Course Info"])
+  if "Homework" in data:
+    headers.append("Homework")
+    ret["Homework"] = parseHomework(data["Homework"])
+  if "Lectures" in data:
+    headers.append("Lectures")
+    ret["Lectures"] = parseLectures(data["Lectures"])
+  if "Exams" in data:
+    headers.append("Exams")
+    ret["Exams"] = parseExams(data["Exams"])
+  if "Announcements" in data:
+    headers.append("Announcements")
+    ret["Announcements"] = parseAnnouncements(data["Announcements"])
+  if "Events" in data:
+    headers.append("Events")
+    ret["Events"] = parseEvents(data["Events"])
+  return headers,ret
