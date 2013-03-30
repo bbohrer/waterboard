@@ -3,6 +3,8 @@ Course Info:
   course: 15150
   name: Functional Programming
   sem: S13
+  cstart: 01/01/2013
+  cend: 06/01/2013
   text: |
     head:15-150
     15-150 is the best course in the history of computer science, featuring the world's most attractive TA's and monads.
@@ -23,19 +25,24 @@ Homework:
 
 Lectures:
  - date: 01/02/2003
+   topic: How to SML
    text: 1.pdf
 
  - date: 02/03/2004
+   topic: Type check
    text: 2.pdf
 
  - date: 03/04/2005
+   topic: Something else
    text: 3.pdf
 
 Exams:
  - date: 03/12/2013
+   location: GHC- 4401
    text: Prostate Exam
 
  - date: 12/13/2014
+   location: GHC- 4401
    text: The Final Countdown
 
 Announcements:
@@ -47,6 +54,7 @@ Events:
 
 Staff:
  - name: Brandon Bohrer
+   role: TA
    events: 
     - "Lab : W 1330 1500"
     - "Lecture : R 1200 1330"
