@@ -42,6 +42,9 @@ def parseEvents(data):
   data = map(lambda x: (x['date'],x['text']) , data)
   return data
 
+def parseStaff(data):
+  return data
+
 def parse(filename):
   f = open(filename)
   data = yaml.load(f)
@@ -65,4 +68,7 @@ def parse(filename):
   if "Events" in data:
     headers.append("Events")
     ret["Events"] = parseEvents(data["Events"])
+  if "Staff" in data:
+    headers.append("Staff")
+    ret["Staff"] = parseStaff(data["Staff"])
   return headers,ret
