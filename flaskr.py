@@ -60,7 +60,6 @@ def close_db_connection(exception):
 
 @app.route('/')
 def show_entries():
-    return "lol"
     db = get_db()
     cur = db.execute('select title, text from entries order by id desc')
     entries = cur.fetchall()
@@ -102,7 +101,7 @@ def logout():
 
 
 if __name__ == '__main__':
-    #init_db()
+    init_db()
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
     #app.debug = True
