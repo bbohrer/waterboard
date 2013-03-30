@@ -7,11 +7,10 @@ def parseCourseInfo(data):
   lines = data['text'].split("\n")
   is_bullet = False
   lines_out = []
-  print("infate" + " " + str(len(lines)))
+
   for i in xrange(len(lines)):
     line = lines[i].strip()
     if(0 == line.find("bullet:")):
-      print("foundit")
       rest = line[7:]
       if(not is_bullet):
         lines_out += ["<ul>"]
@@ -21,9 +20,12 @@ def parseCourseInfo(data):
       if is_bullet:
         lines_out += ["</ul>"]
       is_bullet = False
-      lines_out += [line]
+      if line[:5] == 'head:':
+        lines_out += [re.sub(r'^head:(.*)$',r'<h3>\1</h3>',line)]
+      else:
+        lines_out += ["<p>" + line + "</p>"]
       
-  data['text'] = '<p>' + "".join(lines_out) + '</p>'
+  data['text'] = "".join(lines_out)
   data['text'] = linkify(data['text'])
   data['text'] = re.sub(r'^head:(.*)$',r'<h3>\1</h3>',data['text'])
   return data

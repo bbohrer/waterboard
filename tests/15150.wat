@@ -4,6 +4,7 @@ Course Info:
   name: Functional Programming
   sem: S13
   text: |
+    head:15-150
     15-150 is the best course in the history of computer science, featuring the world's most attractive TA's and monads.
     Yes, we have the world's most attractive monads. They're pretty cute.
     bullet: Woof

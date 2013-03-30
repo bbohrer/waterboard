@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block optstyle %}
+body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Lecture Navigation</li>
+                {% for lect in cont %}
+                  <li><a href="#{{ loop.index }}"> Lecture {{ loop.index }} </a></li>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+        
+        <div class="span9">
+          <div class="row-fluid">
+            {% for lect in cont %}
+            <div class="span4" id="{{ loop.index }}">
+                <h3> Lecture {{ loop.index }} </h3>
+                <ul>
+                  <li>Date: {{ lect[0] }} </li>
+                </ul>
+                <p><a class="btn" href="/Lecture/{{ lect[1] }}">Download Lecture &raquo;</a></p>
+              </div>
+            {% endfor %}
+          </div> <!--/row-->
+        </div>
+      </div>
+    </div>
+{% endblock %}
