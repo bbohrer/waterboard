@@ -45,9 +45,24 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.username
 
+class Post(db.model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(256))
+    content = db.Column(db.String(4096))
+
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content
+
+    def __repr__(self):
+        return '<Title %r>' % self.title
+
 @app.route('/makedb')
 def init_post():
     db.create_all()
+
+    for oldadmin in User.query.all():
+        db.session.delete(oldadmin)
 
     user = User('admin', 'default')
     db.session.add(user)
@@ -87,9 +102,11 @@ def close_db_connection(exception):
 
 @app.route('/')
 def show_entries():
-    db = get_db()
-    cur = db.execute('select title, text from entries order by id desc')
-    entries = cur.fetchall()
+    #db = get_db()
+    #cur = db.execute('select title, text from entries order by id desc')
+    #entries = cur.fetchall()
+
+    entries = Post.query.order_by(Post.id)
     return render_template('show_entries.html', entries=entries)
 
 
@@ -97,10 +114,14 @@ def show_entries():
 def add_entry():
     if not session.get('logged_in'):
         abort(401)
-    db = get_db()
-    db.execute('insert into entries (title, text) values (?, ?)',
-                 [request.form['title'], request.form['text']])
-    db.commit()
+    #db = get_db()
+   # db.execute('insert into entries (title, text) values (?, ?)',
+    #             [request.form['title'], request.form['text']])
+    #db.commit()
+    post = Post(request.form['title'], request.form['text'])
+    db.session.add(post)
+    db.session.commit()
+    
     flash('New entry was successfully posted')
     return redirect(url_for('show_entries'))
 
@@ -113,7 +134,7 @@ def add_user():
         user = User(request.form['username'], request.form['password'])
         db.session.add(user)
         db.session.commit()
-        flash('Added user' + user)
+        flash('Added user' + user.username)
         return redirect(url_for('show_entries'))
     
     return render_template('adduser.html')
@@ -128,7 +149,7 @@ def login():
         if user == None:
             error = 'Invalid username'
         elif user.password != request.form['password']:
-            error = 'Invalid password. Should be ' + user.password
+            error = 'Invalid password.' # Should be ' + user.password
 #        if request.form['username'] != app.config['USERNAME']:
 #            error = 'Invalid username'
 #        elif request.form['password'] != app.config['PASSWORD']:
