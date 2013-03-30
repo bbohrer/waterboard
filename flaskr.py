@@ -35,11 +35,11 @@ db = SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
+    username = db.Column(db.String(80))
     password = db.Column(db.String(20))
 
-    def __init__(self, name, password):
-        self.name = name
+    def __init__(self, username, password):
+        self.username = username
         self.email = password
 
     def __repr__(self):
