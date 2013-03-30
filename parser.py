@@ -50,7 +50,6 @@ def parse(filename):
   if "Course Info" in data:
     headers.append("Course Info")
     ret['Course Info'] = parseCourseInfo(data["Course Info"])
-    print ret['Course Info']
   if "Homework" in data:
     headers.append("Homework")
     ret["Homework"] = parseHomework(data["Homework"])
@@ -67,5 +66,3 @@ def parse(filename):
     headers.append("Events")
     ret["Events"] = parseEvents(data["Events"])
   return headers,ret
-
-parse('tests/15150.wat')
