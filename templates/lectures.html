@@ -3,13 +3,13 @@
 
 <div class="main">
     {% for lect in cont %}
-    <div class="span4" id="{{ loop.index }}">
-      <h3> Lecture {{ loop.index }} </h3>
-      <ul>
-        <li>Date: {{ lect[0] }} </li>
-      </ul>
-      <p><a class="btn" href="/Lecture/{{ lect[1] }}">Download Lecture &raquo;</a></p>
-    </div>
+    <dl class="dl-horizontal" id="{{ loop.index }}">
+      <dt> Lecture {{ loop.index }} </dt>
+      <dd>
+        Date: {{ lect[0] }}
+      </dd>
+      <db><a class="btn" href="/Lecture/{{ lect[1] }}">Download Lecture &raquo;</a></db>
+    </dl>
     {% endfor %}
 </div>
 
