@@ -78,15 +78,15 @@ var ui = {
          
        {"date":"12/15","title":"<a class='callink' href='/homework/2.pdf'>Homework 2 due</a>"} ,
          
-       {"date":"3/12","title":"<a class='callink' href='/exams/GHC- 4401'>Exam 1</a>"} ,
+       {"date":"3/12","title":"<a class='callink' href='/exams/Prostate Exam'>Exam 1</a>"} ,
          
-       {"date":"12/13","title":"<a class='callink' href='/exams/GHC- 4401'>Exam 2</a>"} ,
+       {"date":"12/13","title":"<a class='callink' href='/exams/The Final Countdown'>Exam 2</a>"} ,
          
-       {"date":"1/2","title":"<a class='callink' href='/exams/How to SML'>Lecture 1</a>"} ,
+       {"date":"1/2","title":"<a class='callink' href='/exams/1.pdf'>Lecture 1</a>"} ,
          
-       {"date":"2/3","title":"<a class='callink' href='/exams/Type check'>Lecture 2</a>"} ,
+       {"date":"2/3","title":"<a class='callink' href='/exams/2.pdf'>Lecture 2</a>"} ,
          
-       {"date":"3/4","title":"<a class='callink' href='/exams/Something else'>Lecture 3</a>"} ,
+       {"date":"3/4","title":"<a class='callink' href='/exams/3.pdf'>Lecture 3</a>"} ,
          
        {"date":"1/2","title":"Monad appreciation day"} ,
          
