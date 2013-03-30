@@ -104,8 +104,23 @@ def calendardata(keys, dict):
       fileloc = ""
       events.append(date, event, fileloc)
 
-      
-      
+def calform(event):
+  mystr = ""
+  date = str(event[0].date().month) + "/" + str(event[0].date().day)
+  if (event[1] == None):
+    name = event[2]
+    if (event[3] == ""):
+      mystr = '{"date":"' + date + '","title":"' + name + '"}'
+    else:
+      mystr = '{"date":"' + date + '","title":"' + "<a class='callink' href='" + event[3] + "'>" + name + "</a>" 
+  else: 
+    t = str(event[0].time().hour) + ":" + str(event[0].time().minute)+ " - " + str(event[1].time().hour) + ":" + str(event[1].time().minute)
+    mystr = '{"date":"' + date + '","title":"' + event[2] + "  " + t + '"}'
+  return mystr
+    
+def makecalscript(allevents):
+    strings = [calform(event) for event in allevents]
+    return render_template('caljavascript.js', evlist = strings)
       
       
 if __name__ == '__main__':
