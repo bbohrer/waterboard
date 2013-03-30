@@ -1,31 +1,35 @@
 Course Info:
-  15-150 is the best course in the history of computer science, featuring the world's most attractive TA's and monads.
-  Yes, we have the world's most attractive monads. They're pretty cute.
+  instructor: Erdmann
+  course: 15150
+  name: Functional Programming
+  sem: S13
+  text: "15-150 is the best course in the history of computer science, featuring the world's most attractive TA's and monads.
+  Yes, we have the world's most attractive monads. They're pretty cute."
 
 Homework:
- - out: 1/2/3
-   due: 3/2/1
-   text: "[Hw 1: ChocolateLab](http://www.cs.cmu.edu/~15150/resources/asgn/hw/01/hw01-handout.pdf)"
+ - out: 12/12/12
+   due: 12/13/12
+   text: 1.pdf
 
- - out: 4/2/3
-   due: 5/2/3
-   text: "[Hw 2: JackRusselTerrier](http://www.cs.cmu.edu/~15150/resources/asgn/hw/01/hw02-handout.pdf)"
+ - out: 12/14/12
+   due: 12/15/12
+   text: 2.pdf
 
 Lectures:
- - date: Javier
-   text: "[Lecture 1: Types are Spaces](http://homotopytypetheory.org/)"
+ - date: 01/02/03
+   text: 1.pdf
 
- - date: 3/2/1
-   text: "[Lecture 2: Rainbows are Values](http://existentialtype.wordpress.com/)"
+ - date: 02/03/04
+   text: 2.pdf
 
- - date: 1/2/3
-   text: "[Lecture 3: Functions are Rainbows](http://www.rainbowsandals.com/)"
+ - date: 03/04/05
+   text: 3.pdf
 
 Exams:
- - date: 12/34/56 
+ - date: 03/12/13
    text: Prostate Exam
 
- - date: 65/43/21
+ - date: 12/13/14
    text: The Final Countdown
 
 Announcements:
@@ -35,4 +39,10 @@ Events:
  - date: today
    text: Monad appreciation day
 
- 
+Staff:
+ - name: Brandon Bohrer
+   events: 
+    - "Lab : W 1330 1500"
+    - "Lecture : R 1200 1330"
+   info: "Weird kid"
+   image: bohrer.jpg

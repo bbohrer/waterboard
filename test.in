@@ -1,8 +1,0 @@
-`Course Info`
-This is a sample course info.
-bullet: hello
-bullet: hi
-head: This is a heading
-head: also a heading
-text text [link](http://www.google.com)
-<html>HELLO!</html>
