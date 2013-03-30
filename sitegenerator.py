@@ -8,39 +8,39 @@ app.secret_key = 'some secret used for cookies'
 
 @app.route('/admin/', methods=['GET', 'POST'])
 def admin():
-   if not session.get('logged_in'):
-        flash('You have to log in to do that.')
+  if not session.get('logged_in'):
+    flash('You have to log in to do that.')
+    return redirect(url_for('login'))
 
-        return redirect(url_for('login'))
+  if request.method == 'POST':
+    #user = User(request.form['username'], request.form['password'])
+    #db.session.add(user)
+    #db.session.commit()
+    (keys, dict) = parser.parseText(request.form['data'])
+    if "Course Info" in keys:
+      a = open("static/course info.html", 'w+')
+      a.write(makehome(keys, dict["Course Info"]))
+    if "Homework" in keys:
+      b = open("static/homework.html", 'w+')
+      b.write(makehw(keys, dict["Course Info"], dict["Homework"]))
+    if "Lectures" in keys:
+      b = open("static/lectures.html", 'w+')
+      b.write(makehw(keys, dict["Course Info"], dict["Lectures"]))
+    if "Exams" in keys:
+      b = open("static/exams.html", 'w+')
+      b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
+    if "Announcements" in keys:
+      b = open("static/announcements.html", "w+")
+      b.write(makeannouncements(keys, dict["Course Info"], dict["Announcements"]))
+    if "Staff" in keys:
+      b = open("static/staff.html", "w+")
+      b.write(makeannouncements(keys, dict["Course Info"], dict["Staff"]))
+    flash('Updated website')
+    return redirect(url_for('admin'))
 
-    if request.method == 'POST':
-        #user = User(request.form['username'], request.form['password'])
-        #db.session.add(user)
-        #db.session.commit()
-        
-        (keys, dict) = parser.parseText(request.form['data'])
-        if "Course Info" in keys:
-            a = open("static/course info.html", 'w+')
-            a.write(makehome(keys, dict["Course Info"]))
-        if "Homework" in keys:
-            b = open("static/homework.html", 'w+')
-            b.write(makehw(keys, dict["Course Info"], dict["Homework"]))
-        if "Lectures" in keys:
-            b = open("static/lectures.html", 'w+')
-            b.write(makehw(keys, dict["Course Info"], dict["Lectures"]))
-        if "Exams" in keys:
-            b = open("static/exams.html", 'w+')
-            b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
-
-        flash('Updated website')
-
-        return redirect(url_for('admin'))
-
-    (keys, mydict) = parser.parse("tests/15150.wat")
-
-    myCurrent = open('tests/15150.wat', 'r').read()
-
-    return render_template('admin.html', headers=keys, dict=mydict["Course Info"], current=myCurrent)
+  (keys, mydict) = parser.parse("tests/15150.wat")
+  myCurrent = open('tests/15150.wat', 'r').read()
+  return render_template('admin.html', headers=keys, dict=mydict["Course Info"], current=myCurrent)
 
 @app.route('/')
 @app.route('/course info/')
@@ -61,8 +61,11 @@ def exam():
   
 @app.route('/announcements/')
 def announcements():
-  (keys, dict) = parser.parse("tests/15150.wat")
-  return makeannouncements(keys, dict["Course Info"], dict["Announcements"])
+  return app.send_static_file('announcements.html')
+
+@app.route('/staff/')
+def staff():
+  return app.send_static_file('staff.html')
 
 def makehome(myheaders, mydic):
   return render_template('home.html', headers = myheaders, dict = mydic)
@@ -79,6 +82,9 @@ def makeexam(myheaders, mydic, mycont):
 def makeannouncements(myheaders, mydic, mycont):
   return render_template('announcements.html', headers=myheaders, dict=mydic, cont=mycont)
   
+def makestaff(myheaders, mydic, mycont):
+  return render_template('staff.html', headers=myheaders, dict=mydic, cont=mycont)
+
 def calendardata(keys, dict):
   events = []
   if ("Homework" in keys):
