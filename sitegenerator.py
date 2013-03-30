@@ -35,7 +35,10 @@ def admin():
 
     (keys, mydict) = parser.parse("tests/15150.wat")
 
-    return render_template('admin.html', headers=keys, dict=mydict["Course Info"])
+    myCurrent = open('tests/15150.wat', 'r').read()
+    print myCurrent
+
+    return render_template('admin.html', headers=keys, dict=mydict["Course Info"], current=myCurrent)
 
 @app.route('/')
 @app.route('/course info/')
