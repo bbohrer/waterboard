@@ -1,2 +1,2 @@
-web: python flaskr.py
+web: python app.py
 
