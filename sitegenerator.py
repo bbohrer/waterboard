@@ -2,17 +2,37 @@ import parser
 import os
 from flask import *
 import datetime
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, static_url_path='')
 app.secret_key = 'some secret used for cookies'
+app.config.from_object(__name__)
+app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+# postgres
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80))
+    password = db.Column(db.String(20))
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return '<Name %r>' % self.username
+
+
 
 @app.route('/admin/', methods=['GET', 'POST'])
 def admin():
-   if not session.get('logged_in'):
+    if not session.get('logged_in'):
         flash('You have to log in to do that.')
 
         return redirect(url_for('login'))
-
+    
     if request.method == 'POST':
         #user = User(request.form['username'], request.form['password'])
         #db.session.add(user)
@@ -41,6 +61,25 @@ def admin():
     myCurrent = open('tests/15150.wat', 'r').read()
 
     return render_template('admin.html', headers=keys, dict=mydict["Course Info"], current=myCurrent)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        user = User.query.filter_by(username=request.form['username'] ).first()
+
+        if user == None:
+            error = 'Invalid username'
+        elif user.password != request.form['password']:
+            error = 'Invalid password.' # Should be ' + user.password
+        else:
+            session['logged_in'] = True
+            flash('You were logged in')
+            return redirect(url_for('admin'))
+
+    (keys, mydict) = parser.parse("tests/15150.wat")
+
+    return render_template('login.html', headers=keys, dict=mydict["Course Info"], error=error)
 
 @app.route('/')
 @app.route('/course info/')
