@@ -8,16 +8,16 @@ app = Flask(__name__, static_url_path='')
 def index():
   (keys, dict) = parser.parse("tests/15150.wat")
   if "Course Info" in keys:
-    a = open("html/courseinfo.html", 'r+')
+    a = open("html/courseinfo.html", 'w+')
     a.write(makehome(keys, dict["Course Info"]))
   if "Homework" in keys:
-    b = open("html/homework.html", 'r+')
+    b = open("html/homework.html", 'w+')
     b.write(makehw(keys, dict["Course Info"], dict["Homework"]))
   if "Lectures" in keys:
-    b = open("html/lectures.html", 'r+')
+    b = open("html/lectures.html", 'w+')
     b.write(makehw(keys, dict["Course Info"], dict["Lectures"]))
   if "Exams" in keys:
-    b = open("html/exams.html", 'r+')
+    b = open("html/exams.html", 'w+')
     b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
   return makehome(keys, dict["Course Info"])
 
