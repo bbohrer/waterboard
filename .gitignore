@@ -2,3 +2,10 @@ venv
 *.pyc
 *.swp
 *.db
+static/announcements.html
+static/course info.html
+static/exams.html
+static/homework.html
+static/lectures.html
+static/staff.html
+

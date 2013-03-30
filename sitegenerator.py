@@ -2,21 +2,30 @@ import parser
 import os
 from flask import *
 import datetime
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, static_url_path='')
 app.secret_key = 'some secret used for cookies'
+app.config.from_object(__name__)
+app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+# postgres
+if 'DATABASE_URL' in os.environ:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
 
-@app.route('/admin/', methods=['GET', 'POST'])
-def admin():
-  if False:
-    flash('You have to log in to do that.')
-    return redirect(url_for('login'))
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80))
+    password = db.Column(db.String(20))
 
-  if request.method == 'POST':
-    #user = User(request.form['username'], request.form['password'])
-    #db.session.add(user)
-    #db.session.commit()
-    (keys, dict) = parser.parseText(request.form['data'])
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return '<Name %r>' % self.username
+
+def regenerate_website(keys, dict):
     if "Course Info" in keys:
       a = open("static/course info.html", 'w+')
       a.write(makehome(keys, dict["Course Info"]))
@@ -35,6 +44,30 @@ def admin():
     if "Staff" in keys:
       b = open("static/staff.html", "w+")
       b.write(makestaff(keys, dict["Course Info"], dict["Staff"]))
+
+@app.before_first_request
+def regenerate_website_from_file():
+    (keys, dict) = parser.parse("tests/15150.wat")
+    regenerate_webite(keys, dict)
+
+
+@app.route('/admin/', methods=['GET', 'POST'])
+def admin():
+  #if not session.get('logged_in'):
+  if False:
+    flash('You have to log in to do that.')
+    return redirect(url_for('login'))
+
+  if request.method == 'POST':
+    #user = User(request.form['username'], request.form['password'])
+    #db.session.add(user)
+    #db.session.commit()
+    (keys, dict) = parser.parseText(request.form['data'])
+    regenerate_website(keys,dict)
+
+    myConfig = open('tests/15150.wat', "w+")
+    myConfig.write(request.form['data'])
+
     b = open("static/events.html", "w+")
     b.write(makeevents(keys, dict["Course Info"]))
     b = open("static/caljavascript.js", "w+")
@@ -45,6 +78,25 @@ def admin():
   (keys, mydict) = parser.parse("tests/15150.wat")
   myCurrent = open('tests/15150.wat', 'r').read()
   return render_template('admin.html', headers=keys, dict=mydict["Course Info"], current=myCurrent)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        user = User.query.filter_by(username=request.form['username'] ).first()
+
+        if user == None:
+            error = 'Invalid username'
+        elif user.password != request.form['password']:
+            error = 'Invalid password.' # Should be ' + user.password
+        else:
+            session['logged_in'] = True
+            flash('You were logged in')
+            return redirect(url_for('admin'))
+
+    (keys, mydict) = parser.parse("tests/15150.wat")
+
+    return render_template('login.html', headers=keys, dict=mydict["Course Info"], error=error)
 
 @app.route('/')
 @app.route('/course info/')
@@ -184,4 +236,6 @@ def makecalscript(allevents):
       
 
 if __name__ == '__main__':
-  app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    #regenerate_website()
+    app.run(host='0.0.0.0', port=port, debug = True) 

@@ -4,6 +4,10 @@
 
 <head>
   <meta charset="utf-8">
+  <meta="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
   <title> {% if "name" in dict %} {{ dict["name"] }} {% elif "course" in dict %} {{ dict["course"] }} {% else %} Unknown Course {% endif %} - {% if "sem" in dict %} {{ dict["sem"] }} {% else %} Unknown Semester {% endif %} </title>
   <link rel=stylesheet type=text/css href="{{ url_for('static',filename='stylesheet.css') }}" />
   <script src="{{ url_for('static',filename='bootstrap.js') }}"></script>
