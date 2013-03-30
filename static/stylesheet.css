@@ -659,7 +659,8 @@ dl {
   margin-bottom: 20px;
 }
 dt,
-dd {
+dd,
+db {
   line-height: 20px;
 }
 dt {
@@ -690,7 +691,14 @@ dd {
   white-space: nowrap;
 }
 .dl-horizontal dd {
-  margin-left: 180px;
+  float: left;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dl-horizontal db {
+  float: left;
 }
 hr {
   margin: 20px 0;
