@@ -5,7 +5,7 @@ def linkify(s):
 
 def parseCourseInfo(data):
   data['text'] = linkify(data['text'])
-  data['text'] = re.sub(r'^head:(.*)$',r'<h4>\1</h4>',data['text'])
+  data['text'] = re.sub(r'^head:(.*)$',r'<h3>\1</h3>',data['text'])
   return data
 
 def parseHomework(data):
