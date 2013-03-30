@@ -1,0 +1,2 @@
+- active page in navbar
+- handle html in announcements
