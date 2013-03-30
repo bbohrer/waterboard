@@ -13,6 +13,12 @@ def index():
   if "Homework" in keys:
     b = open("html/homework.html", 'r+')
     b.write(makehw(keys, dict["Course Info"], dict["Homework"]))
+  if "Lectures" in keys:
+    b = open("html/homework.html", 'r+')
+    b.write(makehw(keys, dict["Course Info"], dict["Lectures"]))
+  if "Exams" in keys:
+    b = open("html/homework.html", 'r+')
+    b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
   return makehome(keys, dict["Course Info"])
 
 @app.route('/course info/')
@@ -25,12 +31,27 @@ def homework():
   (keys, dict) = parser.parse("tests/15150.wat")
   return makehw(keys, dict["Course Info"], dict["Homework"])
 
+@app.route('/lecture/')
+def lecture():
+  (keys, dict) = parser.parse("tests/15150.wat")
+  return makelect(keys, dict["Course Info"], dict["Lectures"])
+  
+@app.route('/exam/')
+def exam():
+  (keys, dict) = parser.parse("tests/15150.wat")
+  return makeexam(keys, dict["Course Info"], dict["Exams"])
+  
 def makehome(myheaders, mydic):
   return render_template('home.html', headers = myheaders, dict = mydic)
 
-@app.route('/homework/')
 def makehw(myheaders, mydic, mycont):
   return render_template('homework.html', headers = myheaders, dict = mydic, cont = mycont)
+  
+def makelect(myheaders, mydic, mycont):
+  return render_template('lecture.html', headers = myheaders, dict = mydic, cont = mycont)
+  
+def makeexam(myheaders, mydic, mycont):
+  return render_template('exam.html', headers = myheaders, dict = mydic, cont = mycont)
   
 if __name__ == '__main__':
   app.run(debug=True)

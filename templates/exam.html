@@ -25,9 +25,9 @@ body {
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Homework Navigation</li>
-                {% for hw in cont %}
-                  <li><a href="#{{ loop.index }}"> Assignment {{ loop.index }} </a></li>
+              <li class="nav-header">Exam Navigation</li>
+                {% for exam in cont %}
+                  <li><a href="#{{ loop.index }}"> Exam {{ loop.index }} </a></li>
                 {% endfor %}
             </ul>
           </div>
@@ -35,14 +35,13 @@ body {
         
         <div class="span9">
           <div class="row-fluid">
-            {% for hw in cont %}
+            {% for exam in cont %}
             <div class="span4" id="{{ loop.index }}">
-                <h3> Assignment {{ loop.index }} </h3>
+                <h3> Exam {{ loop.index }} </h3>
                 <ul>
-                  <li>Out: {{ hw[0] }} </li>
-                  <li>Due: {{ hw[1] }} </li>
+                  <li>Date: {{ exam[0] }} </li>
                 </ul>
-                <p><a class="btn" href="/homework/{{ hw[1] }}">Download Assignment &raquo;</a></p>
+                <p><a class="btn" href="/Exam/{{ exam[1] }}">Download Exam &raquo;</a></p>
               </div>
             {% endfor %}
           </div> <!--/row-->
