@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main">
+  <h3>Instructors</h3>
+
+  <ul class="thumbnails">
+    {% for person in cont %}
+      {% if person['role'] == 'Instructor' %}
+        <li class="span5">
+          <img class="span2" src="/img/{{ person['image'] }}" alt="">
+          <span class="name"> {{ person['name'] }}</span><br>
+          <span class="info"> {{ person['info'] }}</span><br>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <h3>Teaching Assistants</h3>
+  <ul class="thumbnails">
+    {% for person in cont %}
+      {% if person['role'] == 'TA' %}
+        <li class="span5">
+          <img class="span2" src="/img/{{ person['image'] }}" alt="">
+          <span class="name"> {{ person['name'] }}</span><br>
+          <span class="info"> {{ person['info'] }}</span><br>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}

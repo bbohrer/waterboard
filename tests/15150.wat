@@ -54,6 +54,7 @@ Events:
 
 Staff:
  - name: Brandon Bohrer
+   role: TA
    events: 
     - "Lab : W 1330 1500"
     - "Lecture : R 1200 1330"
