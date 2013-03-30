@@ -62,6 +62,11 @@ def exam():
   (keys, dict) = parser.parse("tests/15150.wat")
   return makeexam(keys, dict["Course Info"], dict["Exams"])
   
+@app.route('/announcements/')
+def announcements():
+  (keys, dict) = parser.parse("tests/15150.wat")
+  return makeannouncements(keys, dict["Course Info"], dict["Announcements"])
+
 def makehome(myheaders, mydic):
   return render_template('home.html', headers = myheaders, dict = mydic)
 
@@ -73,6 +78,9 @@ def makelect(myheaders, mydic, mycont):
   
 def makeexam(myheaders, mydic, mycont):
   return render_template('exams.html', headers = myheaders, dict = mydic, cont = mycont)
+
+def makeannouncements(myheaders, mydic, mycont):
+  return render_template('announcements.html', headers=myheaders, dict=mydic, cont=mycont)
   
 def calendardata(keys, dict):
   events = []
