@@ -33,7 +33,17 @@ app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
+    password = db.Column(db.String(20))
 
+    def __init__(self, name, password):
+        self.name = name
+        self.email = password
+
+    def __repr__(self):
+        return '<Name %r>' % self.name
 
 def init_db():
     """Creates the database tables."""
@@ -84,15 +94,35 @@ def add_entry():
     flash('New entry was successfully posted')
     return redirect(url_for('show_entries'))
 
+@app.route('/adduser', methods=['GET', 'POST'])
+def add_user():
+    if not session.get('logged_in'):
+        abort(401)
+
+    if request.method == 'POST':
+        user = User(request.form['username'], request.form['password'])
+        db.session.add(user)
+        db.session.commit()
+        flash('Added user' + user)
+        return redirect(url_for('show_entries'))
+    
+    return render_template('adduser.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != app.config['USERNAME']:
+        user = User.query.filter_by(username=request.form['username'] ).first()
+
+        if user == None:
             error = 'Invalid username'
-        elif request.form['password'] != app.config['PASSWORD']:
+        elif user.password != request.form['password']:
             error = 'Invalid password'
+#        if request.form['username'] != app.config['USERNAME']:
+#            error = 'Invalid username'
+#        elif request.form['password'] != app.config['PASSWORD']:
+#            error = 'Invalid password'
         else:
             session['logged_in'] = True
             flash('You were logged in')
