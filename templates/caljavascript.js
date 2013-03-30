@@ -71,6 +71,7 @@ var ui = {
 		var evnt = {"event" : [
 			 {% for ev in evlist %}
        {{ ev }},
+         {% endfor %}
 		]};
 	
 		// Leap year
