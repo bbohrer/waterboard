@@ -8,7 +8,7 @@ app.secret_key = 'some secret used for cookies'
 
 @app.route('/admin/', methods=['GET', 'POST'])
 def admin():
-  if not session.get('logged_in'):
+  if False:
     flash('You have to log in to do that.')
     return redirect(url_for('login'))
 
@@ -34,7 +34,7 @@ def admin():
       b.write(makeannouncements(keys, dict["Course Info"], dict["Announcements"]))
     if "Staff" in keys:
       b = open("static/staff.html", "w+")
-      b.write(makeannouncements(keys, dict["Course Info"], dict["Staff"]))
+      b.write(makestaff(keys, dict["Course Info"], dict["Staff"]))
     flash('Updated website')
     return redirect(url_for('admin'))
 
@@ -45,11 +45,11 @@ def admin():
 @app.route('/')
 @app.route('/course info/')
 def course_info():
-    return app.send_static_file('course info.html')
+  return app.send_static_file('course info.html')
 
 @app.route('/homework/')
 def homework():
-    return app.send_static_file('homework.html')
+  return app.send_static_file('homework.html')
 
 @app.route('/lectures/')
 def lecture():
