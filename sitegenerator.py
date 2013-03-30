@@ -3,12 +3,14 @@ import os
 from flask import *
 
 app = Flask(__name__, static_url_path='')
-
+app.secret_key = 'some secret used for cookies'
 
 @app.route('/admin/', methods=['GET', 'POST'])
 def admin():
-    #if not session.get('logged_in'):
-        #abort(401)
+   if not session.get('logged_in'):
+        flash('You have to log in to do that.')
+
+        return redirect(url_for('login'))
 
     if request.method == 'POST':
         #user = User(request.form['username'], request.form['password'])
@@ -29,7 +31,7 @@ def admin():
             b = open("static/exams.html", 'w+')
             b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
 
-        #flash('Updated website')
+        flash('Updated website')
 
         return redirect(url_for('admin'))
 
