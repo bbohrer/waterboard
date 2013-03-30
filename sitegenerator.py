@@ -172,7 +172,7 @@ def calform(event):
     if (event[3] == ""):
       mystr = '{"date":"' + date + '","title":"' + name + '"}'
     else:
-      mystr = '{"date":"' + date + '","title":"' + "<a class='callink' href='" + event[3] + "'>" + name + "</a>" 
+      mystr = '{"date":"' + date + '","title":"' + "<a class='callink' href='" + event[3] + "'>" + name + "</a>" + '"}'  
   else: 
     t = str(event[0].time().hour) + ":" + str(event[0].time().minute)+ " - " + str(event[1].time().hour) + ":" + str(event[1].time().minute)
     mystr = '{"date":"' + date + '","title":"' + event[2] + "  " + t + '"}'
