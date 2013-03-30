@@ -8,7 +8,7 @@
     {% for person in cont %}
       {% if person['role'] == 'Instructor' %}
         <li class="span5">
-          <img class="span2" src="/img/{{ person['image'] }}" alt="">
+          <img class="sphoto" src="/img/{{ person['image'] }}" alt="">
           <span class="name"> {{ person['name'] }}</span><br>
           <span class="info"> {{ person['info'] }}</span><br>
         </li>
