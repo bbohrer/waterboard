@@ -4,9 +4,28 @@ def linkify(s):
   return re.sub(r'\[(.*)\]\((.*)\)',r'<a href="\2">\1</a>',s)
 
 def parseCourseInfo(data):
+  lines = data['text'].split("\n")
+  is_bullet = False
+  lines_out = []
+  print("infate" + " " + str(len(lines)))
+  for i in xrange(len(lines)):
+    line = lines[i].strip()
+    if(0 == line.find("bullet:")):
+      print("foundit")
+      rest = line[7:]
+      if(not is_bullet):
+        lines_out += ["<ul>"]
+      is_bullet = True
+      lines_out += ["<li>" + rest + "</li>"]
+    else:
+      if is_bullet:
+        lines_out += ["</ul>"]
+      is_bullet = False
+      lines_out += [line]
+      
+  data['text'] = '<p>' + "".join(lines_out) + '</p>'
   data['text'] = linkify(data['text'])
   data['text'] = re.sub(r'^head:(.*)$',r'<h3>\1</h3>',data['text'])
-  data['text'] = '<p>' + data['text'] + '</p>'
   return data
 
 def parseHomework(data):
