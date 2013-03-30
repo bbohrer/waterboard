@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8">
   <title> {% if "name" in dict %} {{ dict["name"] }} {% elif "course" in dict %} {{ dict["course"] }} {% else %} Unknown Course {% endif %} - {% if "sem" in dict %} {{ dict["sem"] }} {% else %} Unknown Semester {% endif %} </title>
+  <link rel=stylesheet type=text/css href="{{ url_for('static',filename='stylesheet.css') }}" />
 </head>
 
 <body>
