@@ -1,3 +1,4 @@
 - active page in navbar
 - handle html in announcements
 - times ending in 00 on calendar only show 0
+- date with multiple events only shows first event
