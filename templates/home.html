@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% block content %}
+{% if "text" in dict %} {{ dict["text"]|safe }} {% endif %}
+{% endblock %}
