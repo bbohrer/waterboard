@@ -7,7 +7,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
   (keys, dict) = parser.parse("tests/15150.wat")
-  print keys
   if "Course Info" in keys:
     f = open("html/courseinfo.html", 'r+')
     f.write(makehome(keys, dict["Course Info"]))
