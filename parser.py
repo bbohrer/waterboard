@@ -41,14 +41,14 @@ def parseLectures(data):
   for i,a in enumerate(data):
     a['text'] = linkify(a['text'])
     data[i] = a
-  data = map(lambda x: (x['date'],x['text']) , data)
+  data = map(lambda x: (x['date'],x['topic'],x['text']) , data)
   return data
 
 def parseExams(data):
   for i,a in enumerate(data):
     a['text'] = linkify(a['text'])
     data[i] = a
-  data = map(lambda x: (x['date'],x['text']) , data)
+  data = map(lambda x: (x['date'],x['location'],x['text']) , data)
   return data
 
 def parseAnnouncements(data):

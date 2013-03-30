@@ -5,8 +5,10 @@
   {% for exam in cont %}
         <dl class="dl-horizontal">
           <dt> Exam {{ loop.index }} </dt>
-          <dd>Date: {{ exam[0] }} </dd>
-          <db><a class="btn" href="/Exam/{{ exam[1] }}">Download Exam &raquo;</a></db>
+          <dd>Date: {{ exam[0] }}
+          <br>
+          Location: {{ exam[1] }} </dd>
+          <db><a class="btn" href="/Exam/{{ exam[2] }}">Download Exam &raquo;</a></db>
         </dl>
   {% endfor %}
     </div>
