@@ -45,6 +45,10 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.name
 
+@app.route('/makedb')
+def init_post():
+    db.create_all()
+
 def init_db():
     """Creates the database tables."""
     with app.app_context():
