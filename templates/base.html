@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="container" />
+  <div class="container">
 
     <h1>{% if "course" in dict %} {{ dict["course"] }} {% else %} Unknown {% endif %} 
       <small>{% if "name" in dict %} {{ dict["name"] }} {% else %} Unknown Course {% endif %}</small></h1>
@@ -22,16 +22,14 @@
                 <li><a href="/{{ key|lower }}"> {{ key|capitalize }}</a></li>
               {% endfor %}
             </ul>
-          </div><!--/.nav-collapse -->
-        </div>
       </div>
     </div>
-  </div>
     
     
     {% block content %}
     {% endblock %}
   
+  </div>
   
 </body>
 </html>
