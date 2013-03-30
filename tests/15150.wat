@@ -1,5 +1,5 @@
 Course Info:
-  instructor: Erdmann
+  instructor: Super Erdmann
   course: 15150
   name: Functional Programming
   sem: S13
@@ -7,7 +7,7 @@ Course Info:
   cend: 06/01/2013
   text: |
     head:15-150
-    15-150 is the best course in the history of computer science, featuring the world's most attractive TA's and monads.
+    15-150 is the besterest course in the history of computer science, featuring the world's most attractive TA's and monads.
     Yes, we have the world's most attractive monads. They're pretty cute.
     bullet: Woof
     bullet: Meow

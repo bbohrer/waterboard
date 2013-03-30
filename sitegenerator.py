@@ -9,7 +9,8 @@ app.secret_key = 'some secret used for cookies'
 app.config.from_object(__name__)
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 # postgres
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+if 'DATABASE_URL' in os.environ:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -24,20 +25,11 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.username
 
+@app.before_first_request
+def regenerate_website(keys=None, dict=None):
+    if keys == None or dict == None:
+        (keys, dict) = parser.parse("tests/15150.wat")
 
-
-@app.route('/admin/', methods=['GET', 'POST'])
-def admin():
-  #if not session.get('logged_in'):
-  if False:
-    flash('You have to log in to do that.')
-    return redirect(url_for('login'))
-
-  if request.method == 'POST':
-    #user = User(request.form['username'], request.form['password'])
-    #db.session.add(user)
-    #db.session.commit()
-    (keys, dict) = parser.parseText(request.form['data'])
     if "Course Info" in keys:
       a = open("static/course info.html", 'w+')
       a.write(makehome(keys, dict["Course Info"]))
@@ -56,6 +48,25 @@ def admin():
     if "Staff" in keys:
       b = open("static/staff.html", "w+")
       b.write(makestaff(keys, dict["Course Info"], dict["Staff"]))
+
+
+@app.route('/admin/', methods=['GET', 'POST'])
+def admin():
+  #if not session.get('logged_in'):
+  if False:
+    flash('You have to log in to do that.')
+    return redirect(url_for('login'))
+
+  if request.method == 'POST':
+    #user = User(request.form['username'], request.form['password'])
+    #db.session.add(user)
+    #db.session.commit()
+    (keys, dict) = parser.parseText(request.form['data'])
+    regenerate_website(keys,dict)
+
+    myConfig = open('tests/15150.wat', "w+")
+    myConfig.write(request.form['data'])
+
     flash('Updated website')
     return redirect(url_for('admin'))
 
@@ -214,4 +225,5 @@ def makecalscript(allevents):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
+    #regenerate_website()
     app.run(host='0.0.0.0', port=port, debug = True) 
