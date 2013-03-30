@@ -48,6 +48,7 @@ class User(db.Model):
 @app.route('/makedb')
 def init_post():
     db.create_all()
+    return "done"
 
 def init_db():
     """Creates the database tables."""
