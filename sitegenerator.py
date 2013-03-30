@@ -25,11 +25,7 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.username
 
-@app.before_first_request
-def regenerate_website(keys=None, dict=None):
-    if keys == None or dict == None:
-        (keys, dict) = parser.parse("tests/15150.wat")
-
+def regenerate_website(keys, dict):
     if "Course Info" in keys:
       a = open("static/course info.html", 'w+')
       a.write(makehome(keys, dict["Course Info"]))
@@ -48,7 +44,11 @@ def regenerate_website(keys=None, dict=None):
     if "Staff" in keys:
       b = open("static/staff.html", "w+")
       b.write(makestaff(keys, dict["Course Info"], dict["Staff"]))
-<<<<<<< HEAD
+
+@app.before_first_request
+def regenerate_website_from_file():
+    (keys, dict) = parser.parse("tests/15150.wat")
+    regenerate_webite(keys, dict)
 
 
 @app.route('/admin/', methods=['GET', 'POST'])
@@ -68,12 +68,10 @@ def admin():
     myConfig = open('tests/15150.wat', "w+")
     myConfig.write(request.form['data'])
 
-=======
     b = open("static/events.html", "w+")
     b.write(makeevents(keys, dict["Course Info"]))
     b = open("static/caljavascript.js", "w+")
     b.write(makecalscript(calendardata(keys,dict)))
->>>>>>> 25bb118faf67970595d29f03f21a892261d123dd
     flash('Updated website')
     return redirect(url_for('admin'))
 
