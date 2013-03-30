@@ -4,8 +4,15 @@ def linkify(s):
   return re.sub(r'\[(.*)\]\((.*)\)',r'<a href="\2">\1</a>',s)
 
 def parseCourseInfo(data):
+  ret = ''
   data['text'] = linkify(data['text'])
-  data['text'] = re.sub(r'^head:(.*)$',r'<h3>\1</h3>',data['text'])
+  for line in data['text'].split('\n'):
+    if line[:5] == 'head:':
+      ret += re.sub(r'^head:(.*)$',r'<h3>\1</h3>',line)
+    else:
+      ret += '<p>' + line + '</p>'
+    ret += '\n'
+  data['text'] = ret
   return data
 
 def parseHomework(data):

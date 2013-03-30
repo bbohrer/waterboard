@@ -1,6 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>{% if num %} {{ num }} {% elif cname %} {{ cname }} {% else %} Unknown Course - {% endif %} {% if ctime %} {{ ctime }} {% else %} Unknown Semester {% endif %} </title>
-    
+{% extends "base.html" %}
+{% block optstyle %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+{% if "text" in dict %} {{ dict["text"]|safe }} {% endif %}
+</div><!-- /container -->
+{% endblock %}
+

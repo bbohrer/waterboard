@@ -5,6 +5,13 @@
 <head>
   <meta charset="utf-8">
   <title> {% if "name" in dict %} {{ dict["name"] }} {% elif "course" in dict %} {{ dict["course"] }} {% else %} Unknown Course {% endif %} - {% if "sem" in dict %} {{ dict["sem"] }} {% else %} Unknown Semester {% endif %} </title>
+  <link rel=stylesheet type=text/css href="{{ url_for('static',filename='stylesheet.css') }}" />
+  <script src="{{ url_for('static',filename='bootstrap.js') }}"></script>
+  <style>
+    body {padding-top:50px;}
+    {% block optstyle %}
+    {% endblock %}
+  </style>
 </head>
 
 <body>
@@ -17,11 +24,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="/">{% if "course" in dict %} {{ dict["course"] }} {% else %} Unknown Course {% endif %}</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               {% for key in headers %} 
-                <li><a href="{{ key|lower }}.html"> {{ key|capitalize }}</a></li>
+                <li><a href="/{{ key|lower }}"> {{ key|capitalize }}</a></li>
               {% endfor %}
             </ul>
           </div><!--/.nav-collapse -->
@@ -29,10 +36,10 @@
       </div>
     </div>
     
-    <div class="container">
+    
     {% block content %}
     {% endblock %}
-    </div>
+  
   
 </body>
 </html>
