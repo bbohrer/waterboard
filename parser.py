@@ -4,8 +4,8 @@ def linkify(s):
   return re.sub(r'\[(.*)\]\((.*)\)',r'<a href="\2">\1</a>',s)
 
 def parseCourseInfo(data):
-  data = linkify(data)
-  data = re.sub(r'^head:(.*)$',r'<h4>\1</h4>',data)
+  data['text'] = linkify(data['text'])
+  data['text'] = re.sub(r'^head:(.*)$',r'<h4>\1</h4>',data['text'])
   return data
 
 def parseHomework(data):
@@ -50,6 +50,7 @@ def parse(filename):
   if "Course Info" in data:
     headers.append("Course Info")
     ret['Course Info'] = parseCourseInfo(data["Course Info"])
+    print ret['Course Info']
   if "Homework" in data:
     headers.append("Homework")
     ret["Homework"] = parseHomework(data["Homework"])
@@ -66,3 +67,5 @@ def parse(filename):
     headers.append("Events")
     ret["Events"] = parseEvents(data["Events"])
   return headers,ret
+
+parse('tests/15150.wat')
