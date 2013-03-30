@@ -48,6 +48,7 @@ def regenerate_website(keys=None, dict=None):
     if "Staff" in keys:
       b = open("static/staff.html", "w+")
       b.write(makestaff(keys, dict["Course Info"], dict["Staff"]))
+<<<<<<< HEAD
 
 
 @app.route('/admin/', methods=['GET', 'POST'])
@@ -67,6 +68,12 @@ def admin():
     myConfig = open('tests/15150.wat', "w+")
     myConfig.write(request.form['data'])
 
+=======
+    b = open("static/events.html", "w+")
+    b.write(makeevents(keys, dict["Course Info"]))
+    b = open("static/caljavascript.js", "w+")
+    b.write(makecalscript(calendardata(keys,dict)))
+>>>>>>> 25bb118faf67970595d29f03f21a892261d123dd
     flash('Updated website')
     return redirect(url_for('admin'))
 
@@ -118,6 +125,10 @@ def announcements():
 def staff():
   return app.send_static_file('staff.html')
 
+@app.route('/events/')
+def events():
+  return app.send_static_file('events.html')
+
 def makehome(myheaders, mydic):
   return render_template('home.html', headers = myheaders, dict = mydic)
 
@@ -136,40 +147,43 @@ def makeannouncements(myheaders, mydic, mycont):
 def makestaff(myheaders, mydic, mycont):
   return render_template('staff.html', headers=myheaders, dict=mydic, cont=mycont)
 
+def makeevents(myheaders, mydic):
+  return render_template('events.html', headers=myheaders, dict=mydic)
+
 def calendardata(keys, dict):
   events = []
   if ("Homework" in keys):
     for i,hw in enumerate(dict["Homework"]):
-      outdate = datetime.strptime(hw[0], "%m/%d/%Y")
-      duedate = datetime.strptime(hw[1], "%m/%d/%Y")
+      outdate = datetime.datetime.strptime(hw[0], "%m/%d/%Y")
+      duedate = datetime.datetime.strptime(hw[1], "%m/%d/%Y")
       outevent = ("Homework " + str(i + 1) + " released")
       dueevent = ("Homework " + str(i + 1) + " due")
       fileloc = "/homework/" + hw[2]
-      events.append(outdate, None, outevent, fileloc)
-      events.append(duedate, None, dueevent, fileloc)
+      events.append((outdate, None, outevent, fileloc))
+      events.append((duedate, None, dueevent, fileloc))
   if ("Exams" in keys):
     for i,ex in enumerate(dict["Exams"]):
-      date = datetime.strptime(ex[0], "%m/%d/%Y")
+      date = datetime.datetime.strptime(ex[0], "%m/%d/%Y")
       event = ("Exam " + str(i + 1))
       fileloc = "/exams/" + ex[1]
-      events.append(date, None, event, fileloc)
+      events.append((date, None, event, fileloc))
   if ("Lectures" in keys):
     for i,lect in enumerate(dict["Lectures"]):
-      date = datetime.strptime(lect[0], "%m/%d/%Y")
+      date = datetime.datetime.strptime(lect[0], "%m/%d/%Y")
       event = ("Lecture " + str(i + 1))
       fileloc = "/exams/" + lect[1]
-      events.append(date, None, event, fileloc)
+      events.append((date, None, event, fileloc))
   if ("Events" in keys):
     for i,even in enumerate(dict["Events"]):
-      date = datetime.strptime(even[0], "%m/%d/%Y")
+      date = datetime.datetime.strptime(even[0], "%m/%d/%Y")
       event = even[1]
       fileloc = ""
-      events.append(date, None, event, fileloc)
+      events.append((date, None, event, fileloc))
 
-  events.append(datetime.strptime(dict["Course Info"]["cstart"], "%m/%d/%Y")
-                , None, "Course Start", "")
-  events.append(datetime.strptime(dict["Course Info"]["cend"], "%m/%d/%Y")
-                , None, "Course End", "")
+  events.append((datetime.datetime.strptime(dict["Course Info"]["cstart"], "%m/%d/%Y")
+                , None, "Course Start", ""))
+  events.append((datetime.datetime.strptime(dict["Course Info"]["cend"], "%m/%d/%Y")
+                , None, "Course End", ""))
 
   if("Staff" in keys):
       for i,ta in enumerate(dict["Staff"]):
@@ -189,18 +203,18 @@ def calendardata(keys, dict):
               wday = ["M","T","W","R","F","Sa","Su"].index(strWday)
 
 
-              cstart = datetime.strptime(dict["Course Info"]["cstart"], "%m/%d/%Y")
-              cend = datetime.strptime(dict["Course Info"]["cend"], "%m/%d/%Y")
+              cstart = datetime.datetime.strptime(dict["Course Info"]["cstart"], "%m/%d/%Y")
+              cend = datetime.datetime.strptime(dict["Course Info"]["cend"], "%m/%d/%Y")
 
-              cstart2 = cstart.replace(day=(cstart.day + (wday - day.weekday())))
+              cstart2 = cstart.replace(day=(cstart.day + (wday - cstart.weekday())))
               if(cstart2 < cstart):
                 cstart2 = cstart2  + timedelta(days=7)
 
               while cstart2 <= cend:
-                  evStart = cstart2.replace(hour= start_hr, minute=start_min)
-                  evEnd = cstart2.replace(hour=end_hr, minute=end_min)
-                  events.append(evStart, evEnd, name + "'s " + thing, "")
-                  cstart2 = cstart2 + timedelta(days=7)
+                  evStart = cstart2.replace(hour= int(start_hr), minute=int(start_min))
+                  evEnd = cstart2.replace(hour=int(end_hr), minute=int(end_min))
+                  events.append((evStart, evEnd, name + "'s " + thing, ""))
+                  cstart2 = cstart2 + datetime.timedelta(days=7)
   return events
 
 
@@ -212,7 +226,7 @@ def calform(event):
     if (event[3] == ""):
       mystr = '{"date":"' + date + '","title":"' + name + '"}'
     else:
-      mystr = '{"date":"' + date + '","title":"' + "<a class='callink' href='" + event[3] + "'>" + name + "</a>" 
+      mystr = '{"date":"' + date + '","title":"' + "<a class='callink' href='" + event[3] + "'>" + name + "</a>" + '"}'  
   else: 
     t = str(event[0].time().hour) + ":" + str(event[0].time().minute)+ " - " + str(event[1].time().hour) + ":" + str(event[1].time().minute)
     mystr = '{"date":"' + date + '","title":"' + event[2] + "  " + t + '"}'
