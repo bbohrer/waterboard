@@ -1,6 +1,7 @@
 import parser
 import os
 from flask import *
+import datetime
 
 app = Flask(__name__, static_url_path='')
 
@@ -73,5 +74,39 @@ def makelect(myheaders, mydic, mycont):
 def makeexam(myheaders, mydic, mycont):
   return render_template('exams.html', headers = myheaders, dict = mydic, cont = mycont)
   
+def calendardata(keys, dict):
+  events = []
+  if ("Homework" in keys):
+    for i,hw in enumerate(dict["Homework"]):
+      outdate = datetime.strptime(hw[0], "%m/%d/%Y")
+      duedate = datetime.strptime(hw[1], "%m/%d/%Y")
+      outevent = ("Homework " + str(i + 1) + " released")
+      dueevent = ("Homework " + str(i + 1) + " due")
+      fileloc = "/homework/" + hw[2]
+      events.append(outdate, outevent, fileloc)
+      events.append(duedate, dueevent, fileloc)
+  if ("Exams" in keys):
+    for i,ex in enumerate(dict["Exams"]):
+      date = datetime.strptime(ex[0], "%m/%d/%Y")
+      event = ("Exam " + str(i + 1))
+      fileloc = "/exams/" + ex[1]
+      events.append(date, event, fileloc)
+  if ("Lectures" in keys):
+    for i,lect in enumerate(dict["Lectures"]):
+      date = datetime.strptime(lect[0], "%m/%d/%Y")
+      event = ("Lecture " + str(i + 1))
+      fileloc = "/exams/" + lect[1]
+      events.append(date, event, fileloc)
+  if ("Events" in keys):
+    for i,even in enumerate(dict["Events"]):
+      date = datetime.strptime(even[0], "%m/%d/%Y")
+      event = even[1]
+      fileloc = ""
+      events.append(date, event, fileloc)
+
+      
+      
+      
+      
 if __name__ == '__main__':
   app.run(debug=True)
