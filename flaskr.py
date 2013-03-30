@@ -45,7 +45,7 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.username
 
-class Post(db.model):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256))
     content = db.Column(db.String(4096))
