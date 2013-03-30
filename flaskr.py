@@ -43,7 +43,7 @@ class User(db.Model):
         self.password = password
 
     def __repr__(self):
-        return '<Name %r>' % self.name
+        return '<Name %r>' % self.username
 
 @app.route('/makedb')
 def init_post():
