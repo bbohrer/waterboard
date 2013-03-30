@@ -14,6 +14,7 @@ app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 #db = SQLAlchemy(app)
 
 def regenerate_website(keys, dict):
+    print "HELLOO!!O!!!!"
     if "Course Info" in keys:
       a = open("static/course info.html", 'w+')
       a.write(makehome(keys, dict["Course Info"]))
@@ -22,22 +23,26 @@ def regenerate_website(keys, dict):
       b.write(makehw(keys, dict["Course Info"], dict["Homework"]))
     if "Lectures" in keys:
       b = open("static/lectures.html", 'w+')
-      b.write(makehw(keys, dict["Course Info"], dict["Lectures"]))
+      b.write(makelect(keys, dict["Course Info"], dict["Lectures"]))
     if "Exams" in keys:
       b = open("static/exams.html", 'w+')
-      b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
+      b.write(makeexam(keys, dict["Course Info"], dict["Exams"]))
     if "Announcements" in keys:
       b = open("static/announcements.html", "w+")
       b.write(makeannouncements(keys, dict["Course Info"], dict["Announcements"]))
     if "Staff" in keys:
       b = open("static/staff.html", "w+")
       b.write(makestaff(keys, dict["Course Info"], dict["Staff"]))
+    print 'hello'
+    b = open("static/events.html", "w+")
+    b.write(makeevents(keys, dict["Course Info"]))
+    b = open("static/caljavascript.js", "w+")
+    b.write(makecalscript(calendardata(keys,dict)))
 
 @app.before_first_request
 def regenerate_website_from_file():
     (keys, dict) = parser.parse("tests/15150.wat")
-    regenerate_webite(keys, dict)
-
+    regenerate_website(keys, dict)
 
 @app.route('/admin/', methods=['GET', 'POST'])
 def admin():
@@ -56,10 +61,6 @@ def admin():
     myConfig = open('tests/15150.wat', "w+")
     myConfig.write(request.form['data'])
 
-    b = open("static/events.html", "w+")
-    b.write(makeevents(keys, dict["Course Info"]))
-    b = open("static/caljavascript.js", "w+")
-    b.write(makecalscript(calendardata(keys,dict)))
     flash('Updated website')
     return redirect(url_for('admin'))
 

@@ -55,10 +55,12 @@ Events:
 Staff:
  - name: Dan Licata
    role: Instructor
+   events: []
    info: "drl"
    image: drl.jpg
  - name: Anshu Bansal
    role: TA
+   events: []
    info: "Cookie dough"
    image: anshumab.jpg
  - name: Brandon Bohrer
@@ -70,33 +72,41 @@ Staff:
    image: bbohrer.jpg
  - name: Sandra Chen
    role: TA
+   events: []
    info: "functions are values"
    image: yschen.jpg
  - name: Aakash Patel
    role: TA
+   events: []
    info: "$$$"
    image: avpatel.jpg
  - name: Gregory Rose
    role: TA
+   events: []
    info: "grose"
    image: grose.jpg
  - name: Keith Miller
    role: TA
+   events: []
    info: "best"
    image: keithmil.jpg
  - name: Vincent Siao
+   events: []
    role: TA
    info: "asian"
    image: vsiao.jpg
  - name: Mark Wong Siang Kai
    role: TA
+   events: []
    info: "songbird"
    image: msiangka.jpg
  - name: Bill Duff
    role: TA
+   events: []
    info: "Insert comment here"
    image: wduff.jpg
  - name: Donald Huang
    role: TA
+   events: []
    info: "Insert comment here"
    image: donaldh.jpg
