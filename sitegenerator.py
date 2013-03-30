@@ -83,30 +83,63 @@ def calendardata(keys, dict):
       outevent = ("Homework " + str(i + 1) + " released")
       dueevent = ("Homework " + str(i + 1) + " due")
       fileloc = "/homework/" + hw[2]
-      events.append(outdate, outevent, fileloc)
-      events.append(duedate, dueevent, fileloc)
+      events.append(outdate, None, outevent, fileloc)
+      events.append(duedate, None, dueevent, fileloc)
   if ("Exams" in keys):
     for i,ex in enumerate(dict["Exams"]):
       date = datetime.strptime(ex[0], "%m/%d/%Y")
       event = ("Exam " + str(i + 1))
       fileloc = "/exams/" + ex[1]
-      events.append(date, event, fileloc)
+      events.append(date, None, event, fileloc)
   if ("Lectures" in keys):
     for i,lect in enumerate(dict["Lectures"]):
       date = datetime.strptime(lect[0], "%m/%d/%Y")
       event = ("Lecture " + str(i + 1))
       fileloc = "/exams/" + lect[1]
-      events.append(date, event, fileloc)
+      events.append(date, None, event, fileloc)
   if ("Events" in keys):
     for i,even in enumerate(dict["Events"]):
       date = datetime.strptime(even[0], "%m/%d/%Y")
       event = even[1]
       fileloc = ""
-      events.append(date, event, fileloc)
+      events.append(date, None, event, fileloc)
 
-      
-      
-      
-      
+  events.append(datetime.strptime(dict["Course Info"]["cstart"], "%m/%d/%Y")
+                , None, "Course Start", "")
+  events.append(datetime.strptime(dict["Course Info"]["cend"], "%m/%d/%Y")
+                , None, "Course End", "")
+
+  if("Staff" in keys):
+      for i,ta in enumerate(dict["Staff"]):
+          name = ta["name"]
+          for e in ta["events"]:
+              tok = e.split(":")
+              thing = tok[0].strip()
+              when = tok[1].strip()
+              whens = when.split(" ")
+              strWday = whens[0]
+              start = whens[1]
+              start_hr = start[:2]
+              start_min = start[2:]
+              end = whens[2]
+              end_hr = end[:2]
+              end_min = end[2:]
+              wday = ["M","T","W","R","F","Sa","Su"].index(strWday)
+
+
+              cstart = datetime.strptime(dict["Course Info"]["cstart"], "%m/%d/%Y")
+              cend = datetime.strptime(dict["Course Info"]["cend"], "%m/%d/%Y")
+
+              cstart2 = cstart.replace(day=(cstart.day + (wday - day.weekday())))
+              if(cstart2 < cstart):
+                cstart2 = cstart2  + timedelta(days=7)
+
+              while cstart2 <= cend:
+                  evStart = cstart2.replace(hour= start_hr, minute=start_min)
+                  evEnd = cstart2.replace(hour=end_hr, minute=end_min)
+                  events.append(evStart, evEnd, name + "'s " + thing, "")
+                  cstart2 = cstart2 + timedelta(days=7)
+  return events
+
 if __name__ == '__main__':
   app.run(debug=True)
