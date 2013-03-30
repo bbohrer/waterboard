@@ -70,117 +70,117 @@ var ui = {
 		// Events
 		var evnt = {"event" : [
 			 
-       { {"date":"12/12","title":"<a class='callink' href='/homework/1.pdf'>Homework 1 released</a> },
+       {"date":"12/12","title":"<a class='callink' href='/homework/1.pdf'>Homework 1 released</a>"} ,
          
-       { {"date":"12/13","title":"<a class='callink' href='/homework/1.pdf'>Homework 1 due</a> },
+       {"date":"12/13","title":"<a class='callink' href='/homework/1.pdf'>Homework 1 due</a>"} ,
          
-       { {"date":"12/14","title":"<a class='callink' href='/homework/2.pdf'>Homework 2 released</a> },
+       {"date":"12/14","title":"<a class='callink' href='/homework/2.pdf'>Homework 2 released</a>"} ,
          
-       { {"date":"12/15","title":"<a class='callink' href='/homework/2.pdf'>Homework 2 due</a> },
+       {"date":"12/15","title":"<a class='callink' href='/homework/2.pdf'>Homework 2 due</a>"} ,
          
-       { {"date":"3/12","title":"<a class='callink' href='/exams/GHC- 4401'>Exam 1</a> },
+       {"date":"3/12","title":"<a class='callink' href='/exams/GHC- 4401'>Exam 1</a>"} ,
          
-       { {"date":"12/13","title":"<a class='callink' href='/exams/GHC- 4401'>Exam 2</a> },
+       {"date":"12/13","title":"<a class='callink' href='/exams/GHC- 4401'>Exam 2</a>"} ,
          
-       { {"date":"1/2","title":"<a class='callink' href='/exams/How to SML'>Lecture 1</a> },
+       {"date":"1/2","title":"<a class='callink' href='/exams/How to SML'>Lecture 1</a>"} ,
          
-       { {"date":"2/3","title":"<a class='callink' href='/exams/Type check'>Lecture 2</a> },
+       {"date":"2/3","title":"<a class='callink' href='/exams/Type check'>Lecture 2</a>"} ,
          
-       { {"date":"3/4","title":"<a class='callink' href='/exams/Something else'>Lecture 3</a> },
+       {"date":"3/4","title":"<a class='callink' href='/exams/Something else'>Lecture 3</a>"} ,
          
-       { {"date":"1/2","title":"Monad appreciation day"} },
+       {"date":"1/2","title":"Monad appreciation day"} ,
          
-       { {"date":"1/1","title":"Course Start"} },
+       {"date":"1/1","title":"Course Start"} ,
          
-       { {"date":"6/1","title":"Course End"} },
+       {"date":"6/1","title":"Course End"} ,
          
-       { {"date":"1/2","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"1/2","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"1/9","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"1/9","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"1/16","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"1/16","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"1/23","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"1/23","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"1/30","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"1/30","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"2/6","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"2/6","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"2/13","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"2/13","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"2/20","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"2/20","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"2/27","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"2/27","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"3/6","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"3/6","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"3/13","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"3/13","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"3/20","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"3/20","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"3/27","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"3/27","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"4/3","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"4/3","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"4/10","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"4/10","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"4/17","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"4/17","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"4/24","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"4/24","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"5/1","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"5/1","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"5/8","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"5/8","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"5/15","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"5/15","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"5/22","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"5/22","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"5/29","title":"Brandon Bohrer's Lab  13:30 - 15:0"} },
+       {"date":"5/29","title":"Brandon Bohrer's Lab  13:30 - 15:0"} ,
          
-       { {"date":"1/3","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"1/3","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"1/10","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"1/10","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"1/17","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"1/17","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"1/24","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"1/24","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"1/31","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"1/31","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"2/7","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"2/7","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"2/14","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"2/14","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"2/21","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"2/21","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"2/28","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"2/28","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"3/7","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"3/7","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"3/14","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"3/14","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"3/21","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"3/21","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"3/28","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"3/28","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"4/4","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"4/4","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"4/11","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"4/11","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"4/18","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"4/18","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"4/25","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"4/25","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"5/2","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"5/2","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"5/9","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"5/9","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"5/16","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"5/16","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"5/23","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"5/23","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
-       { {"date":"5/30","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} },
+       {"date":"5/30","title":"Brandon Bohrer's Lecture  12:0 - 13:30"} ,
          
 		]};
 	

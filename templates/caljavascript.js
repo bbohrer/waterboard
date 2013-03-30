@@ -70,7 +70,7 @@ var ui = {
 		// Events
 		var evnt = {"event" : [
 			 {% for ev in evlist %}
-       {{ ev }} 
+       {{ ev }} ,
          {% endfor %}
 		]};
 	
