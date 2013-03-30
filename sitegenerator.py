@@ -4,23 +4,38 @@ from flask import *
 
 app = Flask(__name__, static_url_path='')
 
-@app.route('/')
-def index():
-  (keys, dict) = parser.parse("tests/15150.wat")
-  if "Course Info" in keys:
-    a = open("html/courseinfo.html", 'w+')
-    a.write(makehome(keys, dict["Course Info"]))
-  if "Homework" in keys:
-    b = open("html/homework.html", 'w+')
-    b.write(makehw(keys, dict["Course Info"], dict["Homework"]))
-  if "Lectures" in keys:
-    b = open("html/lectures.html", 'w+')
-    b.write(makehw(keys, dict["Course Info"], dict["Lectures"]))
-  if "Exams" in keys:
-    b = open("html/exams.html", 'w+')
-    b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
-  return makehome(keys, dict["Course Info"])
 
+@app.route('/admin/', methods=['GET', 'POST'])
+def admin():
+    #if not session.get('logged_in'):
+        #abort(401)
+
+    if request.method == 'POST':
+        #user = User(request.form['username'], request.form['password'])
+        #db.session.add(user)
+        #db.session.commit()
+        
+        (keys, dict) = parser.parse(request.form['data'])
+        if "Course Info" in keys:
+            a = open("html/courseinfo.html", 'w+')
+            a.write(makehome(keys, dict["Course Info"]))
+        if "Homework" in keys:
+            b = open("html/homework.html", 'w+')
+            b.write(makehw(keys, dict["Course Info"], dict["Homework"]))
+        if "Lectures" in keys:
+            b = open("html/lectures.html", 'w+')
+            b.write(makehw(keys, dict["Course Info"], dict["Lectures"]))
+        if "Exams" in keys:
+            b = open("html/exams.html", 'w+')
+            b.write(makehw(keys, dict["Course Info"], dict["Exams"]))
+
+        flash('Updated website')
+
+        return redirect(url_for('/admin/'))
+    
+    return render_template('admin.html')
+
+@app.route('/')
 @app.route('/course info/')
 def course_info():
   (keys, dict) = parser.parse("tests/15150.wat")
