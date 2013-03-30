@@ -2,28 +2,16 @@ import parser
 import os
 from flask import *
 import datetime
-from flask.ext.sqlalchemy import SQLAlchemy
+#from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, static_url_path='')
 app.secret_key = 'some secret used for cookies'
 app.config.from_object(__name__)
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 # postgres
-if 'DATABASE_URL' in os.environ:
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db = SQLAlchemy(app)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80))
-    password = db.Column(db.String(20))
-
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-
-    def __repr__(self):
-        return '<Name %r>' % self.username
+#if 'DATABASE_URL' in os.environ:
+#    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+#db = SQLAlchemy(app)
 
 def regenerate_website(keys, dict):
     if "Course Info" in keys:
