@@ -53,10 +53,50 @@ Events:
    text: Monad appreciation day
 
 Staff:
+ - name: Dan Licata
+   role: Instructor
+   info: "drl"
+   image: drl.jpg
+ - name: Anshu Bansal
+   role: TA
+   info: "Cookie dough"
+   image: anshumab.jpg
  - name: Brandon Bohrer
    role: TA
    events: 
     - "Lab : W 1330 1500"
     - "Lecture : R 1200 1330"
    info: "Weird kid"
-   image: bohrer.jpg
+   image: bbohrer.jpg
+ - name: Sandra Chen
+   role: TA
+   info: "functions are values"
+   image: yschen.jpg
+ - name: Aakash Patel
+   role: TA
+   info: "$$$"
+   image: avpatel.jpg
+ - name: Gregory Rose
+   role: TA
+   info: "grose"
+   image: grose.jpg
+ - name: Keith Miller
+   role: TA
+   info: "best"
+   image: keithmil.jpg
+ - name: Vincent Siao
+   role: TA
+   info: "asian"
+   image: vsiao.jpg
+ - name: Mark Wong Siang Kai
+   role: TA
+   info: "songbird"
+   image: msiangka.jpg
+ - name: Bill Duff
+   role: TA
+   info: "Insert comment here"
+   image: wduff.jpg
+ - name: Donald Huang
+   role: TA
+   info: "Insert comment here"
+   image: donaldh.jpg
