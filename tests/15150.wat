@@ -36,7 +36,7 @@ Announcements:
  - The course staff died in a submarine crash late last night. The semester is cancelled.
 
 Events:
- - date: today
+ - date: 03/30/13
    text: Monad appreciation day
 
 Staff:
