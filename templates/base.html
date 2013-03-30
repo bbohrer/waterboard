@@ -9,6 +9,8 @@
   <script src="{{ url_for('static',filename='bootstrap.js') }}"></script>
   <style>
     body {padding-top:50px;}
+    {% block optstyle %}
+    {% endblock %}
   </style>
 </head>
 
@@ -34,10 +36,10 @@
       </div>
     </div>
     
-    <div class="container">
+    
     {% block content %}
     {% endblock %}
-  </div><!-- /container -->
+  
   
 </body>
 </html>
