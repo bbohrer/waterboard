@@ -39,4 +39,10 @@ Events:
  - date: today
    text: Monad appreciation day
 
- 
+Staff:
+ - name: Brandon Bohrer
+   events: 
+    - "Lab : W 1330 1500"
+    - "Lecture : R 1200 1330"
+   info: "Weird kid"
+   image: bohrer.jpg
