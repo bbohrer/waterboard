@@ -48,6 +48,11 @@ class User(db.Model):
 @app.route('/makedb')
 def init_post():
     db.create_all()
+
+    user = User('admin', 'default')
+    db.session.add(user)
+    db.session.commit()
+
     return "done"
 
 def init_db():
