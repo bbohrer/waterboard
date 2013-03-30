@@ -5250,3 +5250,29 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+.calendar TH {
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+}
+.calendar TD {
+  height: 50px;
+  width: 75px;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  color: #999;
+}
+.calendar TD.weekend {
+  color: #CDCDCD;
+}
+.calendar TD.today {
+  background-color: #EFEFEF;
+  color: #666666;
+}
+.calendar TD.holiday {
+  color: #9d261d;
+}
+.content {
+  color: #333333;
+  font-size: 11px;
+  line-height: 0px;
+}
