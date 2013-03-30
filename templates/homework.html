@@ -1,4 +1,4 @@
-{% extends base.html %}
+{% extends "base.html" %}
 {% block optstyle %}
 body {
         padding-top: 60px;
@@ -36,13 +36,13 @@ body {
         <div class="span9">
           <div class="row-fluid">
             {% for hw in cont %}
-              <div class="span4">
+            <div class="span4" id="{{ loop.index }}">
                 <h3> Assignment {{ loop.index }} </h3>
                 <ul>
                   <li>Out: {{ hw[0] }} </li>
                   <li>Due: {{ hw[1] }} </li>
                 </ul>
-                <p><a class="btn" href="homework/{{ hw[2] }}">Download Assignment &raquo;</a></p>
+                <p><a class="btn" href="{{ hw[2] }}">Download Assignment &raquo;</a></p>
               </div>
             {% endfor %}
           </div> <!--/row-->
